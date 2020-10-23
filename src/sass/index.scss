@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import "./Breakpoints.scss";
+
 html,
 body {
   width: 100%;
@@ -7,10 +9,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
   ::selection {
-    background: #ffffff;
-    color: #3e477a;
+    background: #e74856;
+    color: #ffffff;
   }
 }
 
@@ -21,15 +26,17 @@ body {
   top: 50%;
   width: 100%;
   height: 100%;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   font-weight: 900;
   margin: 1.5rem 0;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   color: #ffffff;
   box-sizing: border-box;
   overflow: hidden;
+
+  @include for-xlarge() {
+    font-size: 3rem;
+  }
 
   .slash {
     color: #e74856;
@@ -48,7 +55,10 @@ body {
 
   .title {
     display: flex;
+    flex: 0 1 auto;
     flex-direction: row;
+    text-align: left;
+    align-self: flex-start;
   }
 
   .marker {
@@ -78,25 +88,79 @@ body {
   }
 
   .role {
+    width: 100%;
     color: #ffffff;
     background: #3e477a;
     border-radius: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
     margin-top: 0.25rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+
+    @include for-xlarge() {
+      font-size: 1.5rem;
+    }
   }
 }
 
 .links {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
 
-  li {
-    font-size: 2rem;
-    color: #e7e7e7;
+  li,
+  li a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-size: 0.8rem;
+    margin: 0 0.5rem;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    @include for-xlarge() {
+      font-size: 1.3rem;
+    }
+
+    & svg {
+      font-size: 2rem;
+
+      @include for-xlarge() {
+        font-size: 3rem;
+      }
+    }
+
+    & a:hover {
+      color: #e74856;
+      transition: all 0.3s ease;
+    }
+
+    &:not(:last-child) {
+      a {
+        &::after {
+          content: "/";
+          display: block;
+          font-family: "Montserrat", -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+            "Helvetica Neue", sans-serif;
+          font-size: 1.5rem;
+          color: #e74856;
+          position: absolute;
+          bottom: 0;
+          right: -1.25rem;
+
+          @include for-xlarge() {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
   }
 }
